@@ -11,9 +11,13 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 import static android.provider.Telephony.Mms.Part.FILENAME;
 
@@ -64,11 +68,40 @@ public class MainActivity extends Activity {
             outStream.close();
         } catch (Throwable t) {
             Toast.makeText(getApplicationContext(),
-                    "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
+                    "ExceptionSF: " + t.toString(), Toast.LENGTH_LONG).show();
         }
-
+        editText.setText("");
     }
-    public void exitApp(){
+
+    public void replace(View v) throws FileNotFoundException {
+        try {
+            OutputStreamWriter outStream =
+              new OutputStreamWriter(openFileOutput(name, 0));
+            String str = "";
+            String tmp = "";
+            Scanner sc = new Scanner(editText.getText().toString());
+            while(sc.hasNext()){
+                tmp = sc.next();
+                if(tmp.equals("школа")){
+                    str +="school ";
+                }else if (tmp.equals("school")){
+                    str += "школа ";
+                } else{
+                    str += tmp + " ";
+                }
+            }
+            Toast.makeText(getApplicationContext(), "Replacing finished" ,Toast.LENGTH_SHORT ).show();
+            outStream.write(str);
+            outStream.close();
+        } catch (Throwable t) {
+            Toast.makeText(getApplicationContext(),
+                    "ExceptionSF: " + t.toString(), Toast.LENGTH_LONG).show();
+        }
+        openFile(v);
+
+}
+
+    public void exitApp(View view){
         finish();
         System.exit(0);
     }

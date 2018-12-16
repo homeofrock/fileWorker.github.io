@@ -28,7 +28,7 @@
             android:id="@+id/open"
             android:src="@drawable/open"
             android:layout_height="100dp"
-            android:layout_weight="0.33"
+            android:layout_weight="0.25"
             android:layout_width="fill_parent"
             android:scaleType="centerCrop"
             android:onClick="openFile"
@@ -39,7 +39,7 @@
             android:src="@drawable/open_package"
             android:layout_width="fill_parent"
             android:layout_height="100dp"
-            android:layout_weight="0.33"
+            android:layout_weight="0.25"
             android:scaleType="centerCrop"
             android:onClick="saveFile"
             />
@@ -49,9 +49,18 @@
             android:src="@drawable/exit"
             android:layout_height="100dp"
             android:layout_width="fill_parent"
-            android:layout_weight="0.33"
+            android:layout_weight="0.25"
             android:scaleType="centerCrop"
             android:onClick="exitApp"
+            />
+        <ImageButton
+            android:id="@+id/replace"
+            android:src="@drawable/replace"
+            android:layout_height="100dp"
+            android:layout_width="fill_parent"
+            android:layout_weight="0.25"
+            android:scaleType="centerCrop"
+            android:onClick="replace"
             />
     </LinearLayout>
 </LinearLayout>
